@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        @import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
+        @import url(https://fonts.googleapis.com/css?family=Raleway:400,);
+
+        /*---- Compatible contact Form by MBT -----*/
+        #form-main{
+            width:100%;
+            float:left;
+            padding-top:0px;
+        }
+        #form-div {
+            background-color:rgba(72,72,72,0.6);
+            padding-left:35px;
+            padding-right:35px;
+            padding-top:35px;
+            padding-bottom:50px;
+            width: 450px;
+            float: left;
+            left: 50%;
+            position: relative;
+            margin-top:30px;
+            margin-left: -260px;
+            -moz-border-radius: 7px;
+            -webkit-border-radius: 7px;
+            border-radius: 7px;
+        }
+        #contact-form-page{
+            text-align:center;
+        }
+        .contact-form-input {
+            color:#3c3c3c;
+            font-family: Helvetica, Arial, sans-serif;
+            font-weight:500;
+            font-size: 18px;
+            border-radius: 0;
+            line-height: 22px;
+            background-color: #fbfbfb;
+            padding: 13px 13px 13px 54px;
+            margin-bottom: 10px;
+            width:100%;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            -ms-box-sizing: border-box;
+            box-sizing: border-box;
+            border: 3px solid rgba(0,0,0,0);
+        }
+        #name1{
+            font-family:Raleway;
+            background-image: url(http://rexkirby.com/kirbyandson/images/name.svg);
+            background-size: 30px 30px;
+            background-position: 11px 8px;
+            background-repeat: no-repeat;
+        }
+
+        #name1:focus{
+            background-image: url(http://rexkirby.com/kirbyandson/images/name.svg);
+            background-size: 30px 30px;
+            background-position: 8px 5px;
+            background-position: 11px 8px;
+            background-repeat: no-repeat;
+        }
+        #email1{
+            font-family:Raleway;
+            background-image: url(http://rexkirby.com/kirbyandson/images/email.svg);
+            background-size: 30px 30px;
+            background-position: 11px 8px;
+            background-repeat: no-repeat;
+        }
+
+        #email1:focus{
+            background-image: url(http://rexkirby.com/kirbyandson/images/email.svg);
+            background-size: 30px 30px;
+            background-position: 11px 8px;
+            background-repeat: no-repeat;
+        }
+        #comment1{
+            font-family:Raleway;
+            background-image: url(http://rexkirby.com/kirbyandson/images/comment.svg);
+            background-size: 30px 30px;
+            background-position: 11px 8px;
+            background-repeat: no-repeat;
+        }
+        textarea {
+            width: 100%;
+            height: 150px;
+            line-height: 150%;
+            resize:vertical;
+        }
+        #button-blue{
+            font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+            float:left;
+            width: 50%;
+            border: #fbfbfb solid 4px;
+            cursor:pointer;
+            background-color: #3498db;
+            color:white;
+            font-size:24px;
+            padding-top:22px;
+            padding-bottom:22px;
+            -webkit-transition: all 0.3s;
+            -moz-transition: all 0.3s;
+            transition: all 0.3s;
+            margin-top:-4px;
+            font-weight:700;
+        }
+
+        input:hover, textarea:hover,
+        input:focus, textarea:focus {
+            background-color:white;
+        }
+        #button-blue:hover{
+            color: #0493bd;
+            background-color: #fbfbfb;
+            -webkit-transition: .3s ease;
+            -moz-transition: .3s ease;
+            -o-transition: .3s ease;
+            -ms-transition: .3s ease;
+            transition: .3s ease;
+        }
+        }
+        .send:hover {
+            color: #3498db;
+        }
+        .clear:hover {
+            color: #3498db;
+        }
+        .send:hover{
+            min-width:50%;
+            width:100%;
+            background-color:white;
+            background-color: #fbfbfb;
+            -webkit-transition: .3s ease;
+            -moz-transition: .3s ease;
+            -o-transition: .3s ease;
+            -ms-transition: .3s ease;
+            transition: .3s ease;
+        }
+
+        @media only screen and (max-width: 580px) {
+            #form-div{
+                left: 3%;
+                margin-right: 3%;
+                width: 88%;
+                margin-left: 0;
+                padding-left: 3%;
+                padding-right: 3%;
+            }
+        }
+
+
+
+        #name{
+            background-image: url(http://rexkirby.com/kirbyandson/images/name.svg);
+            background-size: 30px 30px;
+            background-position: 11px 8px;
+            background-repeat: no-repeat;
+        }
+
+        #name:focus{
+            background-image: url(http://rexkirby.com/kirbyandson/images/name.svg);
+            background-size: 30px 30px;
+            background-position: 8px 5px;
+            background-position: 11px 8px;
+            background-repeat: no-repeat;
+        }
+
+        #email{
+            background-image: url(http://rexkirby.com/kirbyandson/images/email.svg);
+            background-size: 30px 30px;
+            background-position: 11px 8px;
+            background-repeat: no-repeat;
+        }
+
+        #email:focus{
+            background-image: url(http://rexkirby.com/kirbyandson/images/email.svg);
+            background-size: 30px 30px;
+            background-position: 11px 8px;
+            background-repeat: no-repeat;
+        }
+
+        #comment{
+            background-image: url(http://rexkirby.com/kirbyandson/images/comment.svg);
+            background-size: 30px 30px;
+            background-position: 11px 8px;
+            background-repeat: no-repeat;
+        }
+
+
+    </style>
+</head>
+<body>
+<div class='form-main'>
+    <div id="form-div">
+        <form name='contact-form' class="form" th:action="@{/train/save}" th:object="${train}" method="post" >
+            <!-- Name Field -->
+            <input class="contact-form-input"  name='name'  size='30' type='text'   th:field="*{code}" placeholder="Train code"/>
+            <p></p>
+            <!-- Email ID Field -->
+            <input class="contact-form-input"  name='email'  type='text' th:field="*{capacity}"  placeholder="Capacity"/>
+
+            <!-- Clear Button -->
+            <div class='clear'>
+                <input id="button-blue" type='reset' value='Clear'/>
+            </div>
+            <!-- Send Button -->
+            <div class="send">
+                <input id="button-blue" type='submit' value='send'/>
+
+            </div>
+            <p></p>
+            <!-- Validation -->
+            <div style='text-align: center; max-width: 222px; width: 100%'>
+                <p class='contact-form-error-message' id='ContactForm1_contact-form-error-message'></p>
+                <p class='contact-form-success-message' id='ContactForm1_contact-form-success-message'></p>
+            </div>
+        </form>
+        <!-- Custom Contact Form By MBT Ends -->
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+<style>
+    @import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
+    @import url(https://fonts.googleapis.com/css?family=Raleway:400,);
+    @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap');
+
+    /*---- Compatible contact Form by MBT -----*/
+    #form-main{
+        width:100%;
+        float:left;
+        padding-top:0px;
+    }
+    #form-div {
+        background-color:rgba(72,72,72,0.6);
+        padding-left:35px;
+        padding-right:35px;
+        padding-top:35px;
+        padding-bottom:50px;
+        width: 450px;
+        float: left;
+        left: 50%;
+        position: relative;
+        margin-top:30px;
+        margin-left: -260px;
+        -moz-border-radius: 7px;
+        -webkit-border-radius: 7px;
+        border-radius: 7px;
+    }
+    #contact-form-page{
+        text-align:center;
+    }
+    .contact-form-input {
+        color:#3c3c3c;
+        font-family: Helvetica, Arial, sans-serif;
+        font-weight:500;
+        font-size: 18px;
+        border-radius: 0;
+        line-height: 22px;
+        background-color: #fbfbfb;
+        padding: 13px 13px 13px 54px;
+        margin-bottom: 10px;
+        width:100%;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        -ms-box-sizing: border-box;
+        box-sizing: border-box;
+        border: 3px solid rgba(0,0,0,0);
+    }
+    #name1{
+        font-family:Raleway;
+        background-image: url(http://rexkirby.com/kirbyandson/images/name.svg);
+        background-size: 30px 30px;
+        background-position: 11px 8px;
+        background-repeat: no-repeat;
+    }
+
+    #name1:focus{
+        background-image: url(http://rexkirby.com/kirbyandson/images/name.svg);
+        background-size: 30px 30px;
+        background-position: 11px 8px;
+        background-repeat: no-repeat;
+    }
+    #email1{
+        font-family:Raleway,serif;
+        background-image: url(http://rexkirby.com/kirbyandson/images/email.svg);
+        background-size: 30px 30px;
+        background-position: 11px 8px;
+        background-repeat: no-repeat;
+    }
+
+    #email1:focus{
+        background-image: url(http://rexkirby.com/kirbyandson/images/email.svg);
+        background-size: 30px 30px;
+        background-position: 11px 8px;
+        background-repeat: no-repeat;
+    }
+    #comment1{
+        font-family:Raleway,sans-serif;
+        background-image: url(http://rexkirby.com/kirbyandson/images/comment.svg);
+        background-size: 30px 30px;
+        background-position: 11px 8px;
+        background-repeat: no-repeat;
+    }
+    textarea {
+        width: 100%;
+        height: 150px;
+        line-height: 150%;
+        resize:vertical;
+    }
+    #button-blue{
+        font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+        float:left;
+        width: 50%;
+        border: #fbfbfb solid 4px;
+        cursor:pointer;
+        background-color: #3498db;
+        color:white;
+        font-size:24px;
+        padding-top:22px;
+        padding-bottom:22px;
+        -webkit-transition: all 0.3s;
+        -moz-transition: all 0.3s;
+        transition: all 0.3s;
+        margin-top:-4px;
+        font-weight:700;
+    }
+
+    input:hover, textarea:hover,
+    input:focus, textarea:focus {
+        background-color:white;
+    }
+    #button-blue:hover{
+        color: #0493bd;
+        background-color: #fbfbfb;
+        -webkit-transition: .3s ease;
+        -moz-transition: .3s ease;
+        -o-transition: .3s ease;
+        -ms-transition: .3s ease;
+        transition: .3s ease;
+    }
+    }
+    .send:hover {
+        color: #3498db;
+    }
+    .clear:hover {
+        color: #3498db;
+    }
+    .send:hover{
+        min-width:50%;
+        width:100%;
+        background-color: #fbfbfb;
+        -webkit-transition: .3s ease;
+        -moz-transition: .3s ease;
+        -o-transition: .3s ease;
+        -ms-transition: .3s ease;
+        transition: .3s ease;
+    }
+
+    @media only screen and (max-width: 580px) {
+        #form-div{
+            left: 3%;
+            margin-right: 3%;
+            width: 88%;
+            margin-left: 0;
+            padding-left: 3%;
+            padding-right: 3%;
+        }
+    }
+
+
+
+                 #name{
+                     background-image: url(http://rexkirby.com/kirbyandson/images/name.svg);
+                     background-size: 30px 30px;
+                     background-position: 11px 8px;
+                     background-repeat: no-repeat;
+                 }
+
+    #name:focus{
+        background-image: url(http://rexkirby.com/kirbyandson/images/name.svg);
+        background-size: 30px 30px;
+        background-position: 11px 8px;
+        background-repeat: no-repeat;
+    }
+
+    #email{
+        background-image: url(http://rexkirby.com/kirbyandson/images/email.svg);
+        background-size: 30px 30px;
+        background-position: 11px 8px;
+        background-repeat: no-repeat;
+    }
+
+    #email:focus{
+        background-image: url(http://rexkirby.com/kirbyandson/images/email.svg);
+        background-size: 30px 30px;
+        background-position: 11px 8px;
+        background-repeat: no-repeat;
+    }
+
+    #comment{
+        background-image: url(http://rexkirby.com/kirbyandson/images/comment.svg);
+        background-size: 30px 30px;
+        background-position: 11px 8px;
+        background-repeat: no-repeat;
+    }
+
+    /* START CSS VARIABLES */
+    :root {
+        --body-background: #1c223b;
+        --body-text: #ffffff;
+        --container-background: #273349;
+        --table-background: #1c223b;
+        --table-background-hover: #151b31;
+        --table-text: #e2e2e2;
+        --priority-200: #d6a13f;
+        --priority-300: #4480e7;
+        --priority-600: #40c587;
+        --delete-background: #242c4c;
+        --delete-color: #909090;
+        --delete-hover: #ff0000;
+    }
+    /* END CSS VARIABLES */
+
+
+    /* START CSS RESET + COMMON STYLES */
+    * {
+        box-sizing: border-box;
+    }
+    body {
+        animation: fadeInPage ease 1.5s; /* fade page in */
+        animation-iteration-count: 1; /* fade page in */
+        animation-fill-mode: forwards; /* fade page in */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        background-color: var(--body-background);
+        color: var(--body-text);
+        font-family: 'Open Sans', sans-serif;
+        margin: 0;
+    }
+    h1 {
+        text-align: center;
+        margin: -2.5rem 0 0.625rem 0;
+    }
+    /* END CSS RESET + COMMON STYLES */
+
+
+    /* START OUTER CONTAINER STYLES */
+    .outer-container {
+        background-color: var(--container-background);
+        border-radius: 0.625rem;
+        box-shadow: 0 5px 10px rgba(12,16,31,0.4);
+        padding: 6.25rem;
+        margin: auto;
+        width: 90%;
+        max-width: 62.5rem;
+    }
+
+    /* Start Table Styles */
+    table {
+        color: var(--table-text);
+        font-size: 0.875rem;
+        padding: 0.625rem;
+        width: 100%;
+    }
+    table th {
+        font-size: 1rem;
+    }
+    table th, table td {
+        padding: 0.9375rem;
+        text-align: left;
+    }
+    table tbody tr {
+        background-color: var(--table-background);
+    }
+    table tbody tr:hover {
+        background-color: var(--table-background-hover);
+        box-shadow: 0 3px 5px rgba(0,0,0,0.2);
+    }
+    table tbody tr td:first-of-type {
+        border-top-left-radius: 0.3125rem;
+        border-bottom-left-radius: 0.3125rem;
+    }
+    table tbody tr td:last-of-type {
+        border-top-right-radius: 0.3125rem;
+        border-bottom-right-radius: 0.3125rem;
+        text-align: center;
+    }
+    table tbody tr.priority-200 td:first-of-type {
+        border-left: 0.3125rem solid var(--priority-200);
+    }
+    table tbody tr.priority-300 td:first-of-type {
+        border-left: 0.3125rem solid var(--priority-300);
+    }
+    table tbody tr.priority-600 td:first-of-type {
+        border-left: 0.3125rem solid var(--priority-600);
+    }
+    table tbody tr td .fa-circle {
+        transform: scale(0.7);
+    }
+    table tbody tr.priority-200 td .fa-circle {
+        color: var(--priority-200);
+    }
+    table tbody tr.priority-300 td .fa-circle {
+        color: var(--priority-300);
+    }
+    table tbody tr.priority-600 td .fa-circle {
+        color: var(--priority-600);
+    }
+    .delete-btn {
+        cursor: pointer;
+        background-color: transparent;
+        border: 0;
+        border-radius: 0.125rem;
+        color: var(--delete-color);
+        font-size: 1.1rem;
+        opacity: 0.2;
+        padding: 0.3125rem 0.625rem;
+    }
+    .delete-btn:hover {
+        color: var(--delete-hover);
+    }
+    .delete-btn:focus {
+        outline: 0;
+    }
+    table tbody tr:hover .delete-btn {
+        opacity: 1;
+    }
+    /* End Table Styles */
+    /* END OUTER CONTAINER STYLES */
+
+
+    /* KEYFRAMES */
+    /* Fade In Webpage Keyframe */
+    @keyframes fadeInPage {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+
+
+    /* MEDIA QUERIES */
+    @media(max-width: 768px) {
+        .outer-container {
+            padding: 1.25rem;
+        }
+        h1 {
+            margin: 0;
+        }
+    }
+    @media(max-width: 668px) {
+        table th:nth-of-type(3), table td:nth-of-type(3) {
+            display: none;
+        }
+    }
+
+
+</style>
+</head>
+<body>
+<div>
+
+    <div class="priority-200" >
+        <h1>Train list </h1>
+        <table>
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Code</th>
+                <th>Capacity</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="priority-200" th:each="train: ${trains}">
+                <td class="name" th:text="${train.id}"></td>
+                <td class="clicks" th:text="${train.code}"></td>
+                <td class="priority"><i class="fas fa-circle" th:text="${train.capacity}"></td>
+                <td class="delete"> <a th:href="@{'/train/delete/' + ${train.id}}" ><button>Delete</button></a></td>
+            </tr>
+
+
+            </tbody>
+        </table>
+    </div>
+
+
+</div>
+
+<div id="form-div" class="contact-form-input">
+    <form name='contact-form' class="form" th:action="@{/train/save}" th:object="${train}" method="post" >
+        <!-- Name Field -->
+        <input class="contact-form-input"  name='name'  size='30' type='text'   th:field="*{code}" placeholder="Train code"/>
+        <p></p>
+        <!-- Email ID Field -->
+        <input class="contact-form-input"  name='email'  type='text' th:field="*{capacity}"  placeholder="Capacity"/>
+
+
+        <!-- Clear Button -->
+        <div class='clear'>
+            <input id="button-blue" type='reset' value='Clear'/>
+        </div>
+        <!-- Send Button -->
+        <div class="send">
+            <input id="button-blue" type='submit' value='send'/>
+
+        </div>
+        <p></p>
+        <!-- Validation -->
+        <div style='text-align: center; max-width: 222px; width: 100%'>
+            <p class='contact-form-error-message' id='ContactForm1_contact-form-error-message'></p>
+            <p class='contact-form-success-message' id='ContactForm1_contact-form-success-message'></p>
+        </div>
+    </form>
+</div>
+
+
+</body>
+</html>

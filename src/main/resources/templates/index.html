@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Grid Test</title>
+    <!--    <link rel="stylesheet" href="style.css">-->
+    <link href='https://fonts.googleapis.com/css?family=Lobster+Two|Raleway|Oswald:300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body{
+            font-family: raleway, arial, sans-serif;
+            width: 100%;
+            margin: 0 auto;
+            background-color: #f4eeea;
+            display: grid;
+            grid-template-columns: 12% auto 400px 12%;
+            grid-template-rows: auto auto 950px auto auto auto;
+            grid-template-areas: "top-bar     top-bar     top-bar     top-bar"
+						 "main-header main-header main-header main-header"
+						 "hero        hero        hero        hero"
+						 ".           blog-posts  side-bar    ."
+						 ".           news        side-bar    ."
+						 "main-footer main-footer main-footer main-footer";
+        }
+
+        a{
+            text-decoration: none;
+        }
+
+
+
+        .top-bar{
+            grid-area: top-bar;
+            background-color: #3252d8;
+            color: white;
+            height: auto;
+            padding: 4px 12%;
+        }
+
+        .top-bar a{
+            float: right;
+            color: white;
+        }
+
+        .top-bar .social-link{
+            margin-right: 7px;
+        }
+
+        .top-bar .contact-link{
+            margin-right: 26px;
+        }
+
+        .main-header{
+            grid-area: main-header;
+            padding: 12px 12%;
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+        }
+
+        .logo{
+            color: #301671;
+            font-size: 16px;
+        }
+
+        .logo span:nth-child(1){
+            float: left;
+            margin-left: -20px;
+            margin-bottom: -10px;
+        }
+
+        .logo span:nth-child(2){
+            clear: both;
+            display: block;
+            font-family: 'lobster two', serif;
+            font-size: 34px;
+        }
+
+        .logo span:nth-child(3){
+            float: left;
+            margin-left: 143px;
+            margin-top: -7px;
+        }
+
+        .main-nav ul, .footer-nav ul{
+            list-style-type: none;
+        }
+
+        nav ul li{
+            float: left;
+        }
+
+        .main-nav ul li a{
+            font-size: 18px;
+            color: #a63f06;
+            margin: 0 10px;
+        }
+
+
+        .message p{
+            color: white;
+            text-shadow: 2px 2px black;
+            line-height: 1;
+        }
+
+        .message span:first-child{
+            font-size: 42px;
+        }
+
+        .message span:last-child{
+            font-size: 67px;
+        }
+
+
+        .award blockquote{
+            font-size: 28px;
+        }
+
+        .award cite{
+            display: block;
+            text-align: right;
+            font-style: italic;
+            font-size: 18px;
+        }
+
+
+
+        .blog-posts h2, .news h2{
+            font-size: 41px;
+            color: #4f0671;
+            font-weight: normal;
+            padding: 65px 0 25px 0;
+        }
+
+        .news h2{
+            padding-top: 15px;
+        }
+
+        .blog-posts h3, .news h3{
+            font-size: 24px;
+            font-weight: normal;
+            padding-bottom: 10px;
+        }
+
+        .blog-posts ul, .news ul{
+            margin-left: 40px;
+        }
+
+        .blog-posts li, .news li{
+            margin-bottom: 50px;
+        }
+
+
+
+
+
+        .side-bar h2{
+            font-size: 41px;
+            font-weight: normal;
+            text-align: center;
+            line-height: 1;
+        }
+
+
+
+        .main-footer{
+            grid-area: main-footer;
+            background-color: #551ca4;
+            padding: 25px 12%;
+            color: white;
+        }
+
+        .footer-nav{
+            float: left;
+        }
+
+        .footer-nav a{
+            display: inline-block;
+            font-size: 20px;
+            color: white;
+            padding: 0 12px;
+            border-right: solid 1px white;
+        }
+
+        .footer-nav li:last-child a{
+            border: none;
+        }
+
+        @media (max-width: 1600px) {
+            body{
+                grid-template-columns: 2% auto 400px 2%;
+            }
+            .top-bar{
+                padding: 4px 2%;
+            }
+            .main-header{
+                padding: 12px 2%;
+            }
+
+            .main-footer{
+                padding: 25px 2%;
+            }
+        }
+
+        @media (max-width: 1050px) {
+            .main-header{
+                flex-direction: column;
+                align-items: center;
+            }
+            .main-nav{
+                margin-top: 10px;
+            }
+
+
+            .news h2, .blog-posts h2{
+                font-size: 32px;
+            }
+            .news ul, .blog-posts ul{
+                margin-left: 25px;
+            }
+
+            body{
+                grid-template-columns: 3% auto 3%;
+                grid-template-rows: auto auto auto auto auto auto auto;
+                grid-template-areas: "top-bar     top-bar     top-bar"
+							 "main-header main-header main-header"
+							 "hero        hero        hero"
+							 ".           blog-posts  ."
+							 ".           news        ."
+							 ".           side-bar    ."
+							 "main-footer main-footer main-footer";
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+<header class="top-bar">
+    <a class="social-link" href="/"><i class="fa fa-google-plus"></i></a>
+    <a class="social-link" href="/"><i class="fa fa-tumblr"></i></a>
+    <a class="social-link" href="/"><i class="fa fa-twitter"></i></a>
+    <a class="social-link" href="/"><i class="fa fa-linkedin"></i></a>
+    <a class="social-link" href="/"><i class="fa fa-facebook"></i></a>
+    <a class="contact-link" href="tel:+9131234567"><i class="fa fa-phone"></i> 998883810471 </a>
+    <a class="contact-link" href="ismoilovdavron16@gmail.com "><i class="fa fa-envelope"></i> ismoilovdavron16@gmail.com</a>
+</header>
+
+<header class="main-header">
+    <div class="logo-container">
+        <p class="logo"><span>By</span> <span>Ismoilov Davron </span> <span> Magic </span></p>
+    </div>
+    <nav class="main-nav">
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="/login">Login</a></li>
+            <li><a href="#">Register</a></li>
+
+        </ul>
+    </nav>
+</header>
+
+
+
+
+
+
+
+
+<footer class="main-footer">
+    <nav class="footer-nav">
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Join</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+
+</footer>
+
+</body>
+</html>
